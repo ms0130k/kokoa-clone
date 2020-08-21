@@ -9,6 +9,15 @@
   font-size: 32px;
   font-weight: 600;
 }
-.screen-header__icons span {
+.screen-header__icons > span {
   margin-left: 25px;
+}
+.screen-header__icons > span:last-child {
+  position: relative;
+}
+.screen-header__icons .update-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 3.5px;
+  top: 0px;
 }
