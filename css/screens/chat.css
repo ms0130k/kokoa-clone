@@ -75,3 +75,20 @@
   border-top-right-radius: 0px;
   margin-left: 5px;
 }
+.reply {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 25px;
+  box-sizing: border-box;
+  align-items: center;
+}
+.reply .reply__column:first-child {
+  width: 10%;
+}
+.reply .reply__column:last-child {
+  width: 90%;
+}
