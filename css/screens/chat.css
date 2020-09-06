@@ -1,6 +1,6 @@
 #chat-screen {
   background-color: #bac1d1;
-  height: 10000vh;
+  height: 500vh;
 }
 #chat-screen .alt-header {
   top: 10px;
@@ -10,11 +10,23 @@
   z-index: 1;
   background-color: #bac1d1;
 }
+@keyframes fadeInMainChat {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
 .main-chat {
   margin-top: 120px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  will-change: transform;
+  animation: fadeInMainChat var(--fadeIn-time) linear;
 }
 #chat-screen .status-bar {
   background-color: #bac1d1;
@@ -27,10 +39,19 @@
   border-radius: 25px;
   margin-bottom: 25px;
 }
+@keyframes fadeInFriendChat {
+  from {
+    transform: translateX(-400px);
+  }
+  to {
+    transform: none;
+  }
+}
 .message-row {
   width: 100%;
   display: flex;
   margin-bottom: 25px;
+  animation: fadeInFriendChat var(--fadeIn-time) linear;
 }
 .message-row img {
   width: 50px;
@@ -63,13 +84,22 @@
   opacity: 0.8;
   font-size: 14px;
 }
-.message-row--own {
-  justify-content: flex-end;
+@keyframes fadeInOwnChat {
+  from {
+    transform: translateX(400px);
+  }
+  to {
+    translate: none;
+  }
 }
-.message-row--own .message__info {
+.message-row__own {
+  justify-content: flex-end;
+  animation: fadeInOwnChat var(--fadeIn-time) linear;
+}
+.message-row__own .message__info {
   flex-direction: row-reverse;
 }
-.message-row--own .message__bubble {
+.message-row__own .message__bubble {
   background-color: var(--yellow);
   border-top-left-radius: 15px;
   border-top-right-radius: 0px;
@@ -85,6 +115,7 @@
   padding: 5px 25px;
   box-sizing: border-box;
   align-items: center;
+  transition: all var(--reply-animation-time) ease-in-out;
 }
 .reply .reply__column:first-child {
   width: 10%;
@@ -103,6 +134,7 @@
   border: var(--main-border);
   border-radius: 25px;
   box-sizing: border-box;
+  transition: all var(--reply-animation-time) ease-in-out;
 }
 .reply__column:last-child > i,
 .reply__column:last-child > button {
@@ -128,4 +160,21 @@
 .reply__column button:focus,
 .reply__column button:active {
   outline: none;
+}
+.reply .reply__column:first-child,
+.reply .fa-smile-wink,
+.reply button {
+  transition: opacity var(--reply-animation-time) ease-in-out;
+}
+.reply:focus-within .reply__column:first-child,
+.reply:focus-within .fa-smile-wink,
+.reply:focus-within button {
+  opacity: 0;
+}
+.reply:focus-within input {
+  width: 95vw;
+  transform: translateX(-11%) translateY(-80px);
+}
+.reply:focus-within {
+  transform: translateY(80px);
 }

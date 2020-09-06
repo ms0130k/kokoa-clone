@@ -4,4 +4,6 @@
   --main-border: 1px solid var(--gray-bar);
   --gray-font: rgba(0, 0, 0, 0.5);
   --gray-bar: rgba(0, 0, 0, 0.3);
+  --fadeIn-time: 0.8s;
+  --reply-animation-time: 0.3s;
 }
